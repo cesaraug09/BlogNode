@@ -1,0 +1,27 @@
+<div class="jumbotron">
+  <h1 class="display-4">Bem vindo ao Blog</h1>
+  <p class="lead">Esse é um blog feito em node para estudo do aluno César Augusto com base do curso do youtuber Victor Lima - Ciência da Computação.</p>
+  <hr class="my-4">
+  <p>As tecnologias usadas: NodeJS, Bootstrap, Mongoose, Express, Middlewares.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/usuario/registro" role="button">Crie uma conta</a>
+  </p>
+</div>
+
+<hr>
+
+<h2>Postagens recentes:</h2>
+{{#each postagens}}
+<div class="card mt-2">
+    <div class="card-body">
+        <h3>{{titulo}}</h3>
+        <p>Descrição: {{descricao}}</p>
+        <small>Categoria: <b>{{categoria.nome}}</b></small>
+        <div class="buttons">
+            <a href="/postagem/{{slug}}"><button class="btn btn-success">Ler mais</button></a>
+        </div>
+    </div>
+</div>
+{{else}}
+<h4>Ainda não existem postagens</h4>
+{{/each}}

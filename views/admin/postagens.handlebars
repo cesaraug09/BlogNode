@@ -1,0 +1,46 @@
+<h2>Lista de postagens:</h2><hr>
+
+<div class="mybox">
+{{#each postagens}}
+<div class="card mt-2">
+    <div class="card-body">
+        <h4>{{titulo}}</h4>
+        <p>Descrição: {{descricao}}</p>
+        <small>Data: {{date}}</small><br>
+        <small>Categoria: <b>{{categoria.nome}}</b></small>
+        <div class="buttons">
+        <a href="/admin/postagens/edit/{{_id}}"><button class="btn btn-outline-success mt-2">Editar</button></a>
+        <form action="/admin/postagens/deletar" method="post">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="button" class="btn btn-outline-danger mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Deletar
+                    </button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmação</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que deseja deletar a categoria? Essa ação não pode ser desfeita.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-danger">Continuar</button>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                </form>
+
+
+        </div>
+    </div>
+</div>
+{{else}}
+<h2>Nenhuma postagem criada.</h2>
+{{/each}}
+</div>
+<a href="/admin/postagens/add"><button class="btn btn-success mt-2">Nova postagem</button></a>
