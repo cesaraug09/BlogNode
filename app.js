@@ -14,7 +14,9 @@ const Categoria = mongoose.model("categorias")
 const usuario = require('./routes/usuario')
 const passport = require("passport")
 require("./config/auth")(passport)
-const db = require("./config/db")
+//const db = require("./config/db")
+require("dotenv").config()
+require("./config/connection")
 //const mongoose = require('mongoose');
 // Configurações
     // Sessão
@@ -50,12 +52,12 @@ const db = require("./config/db")
     // Public
         app.use(express.static('public'));
     // se conectando ao banco mongoose
-    mongoose.Promise = global.Promise;
+    /*mongoose.Promise = global.Promise;
     mongoose.connect(db.mongoURI).then(()=>{
         console.log('Conectado ao mongo')
     }).catch((err)=>{
         console.log(`Erro ao se conectar: ${err}`)
-    })
+    })*/
 // Rotas
 
 app.use((req,res,next)=>{
